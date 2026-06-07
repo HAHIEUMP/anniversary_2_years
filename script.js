@@ -49,11 +49,19 @@ const final = document.getElementById("final");
 const music = document.getElementById("music");
 
 // =====================
-// MUSIC FIX
+// MUSIC FIX (AUTO + FALLBACK)
 // =====================
-window.addEventListener("click", () => {
-music.play();
-}, { once:true });
+function playMusic(){
+music.volume = 0.5;
+let playPromise = music.play();
+
+if(playPromise !== undefined){
+playPromise.catch(()=>{
+window.addEventListener("click",()=>music.play(),{once:true});
+});
+}
+}
+playMusic();
 
 // =====================
 // TYPEWRITER
@@ -62,7 +70,7 @@ function sleep(ms){
 return new Promise(r=>setTimeout(r,ms));
 }
 
-async function typeWriter(el, text){
+async function typeWriter(el,text){
 el.innerHTML="";
 for(let i=0;i<text.length;i++){
 el.innerHTML += text[i];
@@ -71,7 +79,7 @@ await sleep(25);
 }
 
 // =====================
-// RESET
+// FLOW RESET
 // =====================
 function hideAll(){
 text.innerText="";
@@ -85,7 +93,7 @@ final.style.display="none";
 }
 
 // =====================
-// FLOW
+// MAIN FLOW
 // =====================
 async function run(){
 
@@ -113,15 +121,14 @@ heart.style.display="none";
 thanks.style.display="none";
 
 // =====================
-// LETTER
+// LETTER (FIXED + TYPEWRITER)
 // =====================
 letterBox.style.display="block";
-
-await typeWriter(letterText, `
+await typeWriter(letterText,`
 Cảm ơn em đã cùng anh đi qua mọi cung bậc cảm xúc.
 
 Nhìn lại 2 năm qua, anh càng trân trọng từng nụ cười,
-từng lúc nhìn nhau qua điện thoại và cả những lần giận hờn để hiểu nhau hơn.
+từng cái ôm và cả những lúc giận hờn để hiểu nhau hơn.
 
 Yêu em là điều đúng đắn nhất anh từng làm.
 
@@ -213,4 +220,4 @@ document.body.appendChild(f);
 
 setTimeout(()=>f.remove(),2000);
 }
-}
+}  
