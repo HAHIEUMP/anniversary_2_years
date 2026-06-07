@@ -1,9 +1,4 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:arial;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:arial;}
 
 body{
 background:black;
@@ -32,15 +27,13 @@ z-index:2;
 text-align:center;
 }
 
-/* TEXT */
 #text{
 font-size:60px;
-text-shadow:0 0 10px pink;
+text-shadow:0 0 15px pink;
 }
 
-/* HEART */
 #heart{
-font-size:140px;
+font-size:120px;
 display:none;
 animation:beat 0.8s infinite;
 color:red;
@@ -52,52 +45,52 @@ color:red;
 100%{transform:scale(1);}
 }
 
-/* LETTER */
-#letter{
+#thanks{
 display:none;
-width:320px;
-padding:15px;
+font-size:25px;
+margin-top:10px;
+}
+
+/* CIRCLE GALLERY */
+#circleBox{
+display:none;
+position:relative;
+width:300px;
+height:300px;
+animation:rotate 20s linear infinite;
+}
+
+.circle{
+position:absolute;
+width:60px;
+height:60px;
 border-radius:10px;
-background:rgba(255,255,255,0.1);
+top:50%;
+left:50%;
+transform-origin:150px 0;
 }
 
-/* GALLERY */
-#gallery{
-display:none;
-width:300px;
-overflow:hidden;
-}
-
-.slider{
-display:flex;
-transition:1s;
-}
-
-.slider img{
-width:300px;
+@keyframes rotate{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 /* QUESTION */
 #question{
 display:none;
-font-size:22px;
+font-size:20px;
 margin-top:20px;
 }
 
-/* BUTTON */
-#yesBtn{
+#yes{
 display:none;
-margin-top:10px;
 padding:10px 20px;
-border:none;
-border-radius:10px;
-cursor:pointer;
+margin-top:10px;
 }
 
 /* FINAL */
-#finalText{
+#final{
 display:none;
 font-size:40px;
 margin-top:20px;
-text-shadow:0 0 10px red;
 }
