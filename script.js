@@ -101,7 +101,7 @@ await typeText(`
 Cảm ơn em đã cùng anh đi qua mọi cảm xúc.
 
 Hai năm qua anh trân trọng từng nụ cười của em,
-từng cái ôm và cả những lúc giận hờn để hiểu nhau hơn.
+từng ánh mắt và cả những lúc giận hờn để hiểu nhau hơn.
 
 Yêu em là điều đúng đắn nhất anh từng làm.
 
