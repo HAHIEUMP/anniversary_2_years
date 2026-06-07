@@ -50,23 +50,24 @@ color:red;
 100%{transform:scale(1);}
 }
 
-/* LETTER */
+/* 💌 LETTER FIX */
 #letterBox{
 display:none;
-width:320px;
+width:340px;
 padding:15px;
 border-radius:12px;
 background:rgba(255,255,255,0.08);
-backdrop-filter: blur(5px);
+backdrop-filter: blur(6px);
 }
 
 #letterText{
 font-size:14px;
 line-height:1.6;
 text-align:left;
+white-space:pre-wrap;
 }
 
-/* PLANET 3D */
+/* PLANET */
 #planet{
 display:none;
 position:absolute;
@@ -91,12 +92,8 @@ box-shadow:0 0 10px rgba(255,255,255,0.2);
 }
 
 @keyframes spin{
-0%{
-transform:translate(-50%,-50%) rotateY(0deg) rotateX(12deg);
-}
-100%{
-transform:translate(-50%,-50%) rotateY(360deg) rotateX(12deg);
-}
+0%{transform:translate(-50%,-50%) rotateY(0deg) rotateX(12deg);}
+100%{transform:translate(-50%,-50%) rotateY(360deg) rotateX(12deg);}
 }
 
 /* QUESTION */
