@@ -41,17 +41,21 @@ const yes=document.getElementById("yes");
 const final=document.getElementById("final");
 const music=document.getElementById("music");
 
-// MUSIC FIX
+// MUSIC AUTO
 window.addEventListener("click",()=>music.play(),{once:true});
 
-// sleep
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 
-// TYPE LETTER (QUAN TRỌNG)
+// 💌 TYPEWRITER + AUTO SCROLL FIX
 async function typeText(text){
 letterText.innerHTML="";
+
 for(let i=0;i<text.length;i++){
-letterText.innerHTML+=text[i];
+letterText.innerHTML += text[i];
+
+// 🔥 auto scroll
+letterText.scrollTop = letterText.scrollHeight;
+
 await sleep(25);
 }
 }
@@ -73,7 +77,7 @@ async function run(){
 
 hideAll();
 
-// 3 2 1
+// intro
 text.innerText="3"; await sleep(700);
 text.innerText="2"; await sleep(700);
 text.innerText="1"; await sleep(700);
@@ -82,7 +86,7 @@ text.innerText="HAPPY"; await sleep(900);
 text.innerText="ANNIVERSARY"; await sleep(1000);
 text.innerText="2 YEARS"; await sleep(1200);
 
-// HEART
+// heart
 heart.style.display="block";
 thanks.style.display="block";
 thanks.innerText="Cảm ơn em ❤️";
@@ -93,24 +97,27 @@ text.innerText="";
 heart.style.display="none";
 thanks.style.display="none";
 
-// 💌 LETTER (FIX CHẮC CHẮN HIỆN)
+// 💌 LETTER
 letterBox.style.display="block";
 
 await typeText(`
-Cảm ơn em đã cùng anh đi qua mọi cảm xúc.
+Cảm ơn em đã cùng anh đi qua mọi cung bậc cảm xúc.
 
 2 năm qua anh trân trọng từng nụ cười của em,
-từng lần mình giận hờn để hiểu nhau hơn.
+từng cái ôm và cả những lần giận hờn để hiểu nhau hơn.
 
 Yêu em là điều đúng đắn nhất anh từng làm.
 
 Anh không cần hoàn hảo,
-chỉ cần có em ở bên.
+chỉ cần có em bên cạnh.
 
-Cảm ơn em vì đã luôn ở lại.
+Cảm ơn em vì đã luôn ở lại bên anh.
+
+Dù sau này thế nào,
+anh vẫn sẽ chọn em.
 `);
 
-await sleep(1500);
+await sleep(2000);
 
 letterBox.style.display="none";
 
@@ -142,7 +149,7 @@ yes.style.display="inline-block";
 
 run();
 
-// YES
+// YES CLICK
 yes.onclick=()=>{
 
 question.style.display="none";
