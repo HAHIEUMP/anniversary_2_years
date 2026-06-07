@@ -50,21 +50,26 @@ color:red;
 100%{transform:scale(1);}
 }
 
-/* 💌 LETTER FIX */
+/* 💌 LETTER FIX (QUAN TRỌNG NHẤT) */
 #letterBox{
 display:none;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 width:340px;
 padding:15px;
 border-radius:12px;
 background:rgba(255,255,255,0.08);
 backdrop-filter: blur(6px);
+z-index:999;   /* 🔥 phải cao để KHÔNG bị che */
 }
 
 #letterText{
 font-size:14px;
 line-height:1.6;
-text-align:left;
 white-space:pre-wrap;
+text-align:left;
 }
 
 /* PLANET */
@@ -88,7 +93,6 @@ object-fit:cover;
 top:50%;
 left:50%;
 transform-origin:0 0;
-box-shadow:0 0 10px rgba(255,255,255,0.2);
 }
 
 @keyframes spin{
@@ -101,6 +105,7 @@ box-shadow:0 0 10px rgba(255,255,255,0.2);
 display:none;
 font-size:20px;
 margin-top:20px;
+z-index:999;
 }
 
 #yes{
@@ -110,6 +115,7 @@ margin-top:10px;
 border:none;
 border-radius:10px;
 cursor:pointer;
+z-index:999;
 }
 
 #final{
@@ -117,25 +123,5 @@ display:none;
 font-size:40px;
 margin-top:20px;
 text-shadow:0 0 10px red;
-}
-#letterBox{
-display:none;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:340px;
-padding:15px;
-border-radius:12px;
-background:rgba(255,255,255,0.08);
-backdrop-filter: blur(6px);
-z-index:10;   /* 🔥 quan trọng để không bị che */
-}
-
-#letterText{
-font-size:14px;
-line-height:1.6;
-white-space:pre-wrap;
-text-align:left;
-color:white;
+z-index:999;
 }
