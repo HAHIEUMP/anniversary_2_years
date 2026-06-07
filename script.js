@@ -31,21 +31,28 @@ drops[i]++;
 }
 setInterval(draw,30);
 
+// ===== ELEMENTS =====
+const text = document.getElementById("text");
+const heart = document.getElementById("heart");
+const letter = document.getElementById("letter");
+const gallery = document.getElementById("gallery");
+const question = document.getElementById("question");
+const yesBtn = document.getElementById("yesBtn");
+const finalText = document.getElementById("finalText");
+
 // ===== MUSIC =====
 window.addEventListener("click",()=>{
 document.getElementById("music").play();
-});
+},{once:true});
 
-// ===== FLOW =====
-let text = document.getElementById("text");
-
+// ===== FLOW (FIXED SEQUENCE) =====
 function sleep(ms){
 return new Promise(r=>setTimeout(r,ms));
 }
 
 async function run(){
 
-// 3 2 1
+// 3 2 1 (GIỮ NGUYÊN)
 text.innerText="3";
 await sleep(1000);
 
@@ -57,7 +64,7 @@ await sleep(1000);
 
 // HAPPY
 text.innerText="HAPPY";
-await sleep(1000);
+await sleep(1200);
 
 // ANNIVERSARY
 text.innerText="ANNIVERSARY";
@@ -68,24 +75,22 @@ text.innerText="2 YEARS";
 await sleep(1500);
 
 // HEART
-document.getElementById("heart").style.display="block";
+heart.style.display="block";
 await sleep(1500);
 
-// LETTER
-document.getElementById("letter").style.display="block";
-document.getElementById("letter").innerHTML=
-"Cảm ơn em đã đến bên anh...<br>2 năm qua rất đẹp ❤️";
+// LETTER (KHÔNG MẤT TEXT TRÊN)
+letter.style.display="block";
+letter.innerHTML="Cảm ơn em đã đến bên anh...<br>2 năm qua rất đẹp ❤️";
 await sleep(2500);
 
-// GALLERY
-document.getElementById("gallery").style.display="block";
+// GALLERY (CHẠY XONG MỚI QUA BƯỚC SAU)
+gallery.style.display="block";
 startSlider();
 await sleep(6000);
 
-// QUESTION
-document.getElementById("question").style.display="block";
-document.getElementById("yesBtn").style.display="block";
-
+// QUESTION (LUÔN Ở CUỐI)
+question.style.display="block";
+yesBtn.style.display="inline-block";
 }
 
 run();
@@ -101,27 +106,27 @@ document.getElementById("slider").style.transform=`translateX(-${index*300}px)`;
 },2000);
 }
 
-// ===== YES BUTTON =====
-document.getElementById("yesBtn").onclick=function(){
+// ===== BUTTON FIX (KHÔNG MẤT) =====
+yesBtn.onclick=function(){
 
-document.getElementById("question").style.display="none";
-document.getElementById("yesBtn").style.display="none";
+question.style.display="none";
+yesBtn.style.display="none";
 
-document.getElementById("finalText").style.display="block";
+finalText.style.display="block";
 
-// simple fireworks
 fireworks();
 };
 
-// ===== FIREWORKS SIMPLE =====
+// ===== FIREWORKS =====
 function fireworks(){
-for(let i=0;i<50;i++){
+for(let i=0;i<80;i++){
 let f=document.createElement("div");
 f.innerHTML="✨";
 f.style.position="absolute";
 f.style.left=Math.random()*window.innerWidth+"px";
 f.style.top=Math.random()*window.innerHeight+"px";
 f.style.fontSize="20px";
+
 document.body.appendChild(f);
 
 setTimeout(()=>f.remove(),2000);
