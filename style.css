@@ -50,19 +50,21 @@ color:red;
 100%{transform:scale(1);}
 }
 
-/* 💌 LETTER FIX (QUAN TRỌNG NHẤT) */
+/* 💌 LETTER FIX FULL */
 #letterBox{
 display:none;
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:340px;
+width:360px;
+height:320px;
 padding:15px;
 border-radius:12px;
 background:rgba(255,255,255,0.08);
 backdrop-filter: blur(6px);
-z-index:999;   /* 🔥 phải cao để KHÔNG bị che */
+z-index:999;
+overflow:hidden;
 }
 
 #letterText{
@@ -70,6 +72,11 @@ font-size:14px;
 line-height:1.6;
 white-space:pre-wrap;
 text-align:left;
+color:white;
+
+height:100%;
+overflow-y:auto;
+padding-right:6px;
 }
 
 /* PLANET */
