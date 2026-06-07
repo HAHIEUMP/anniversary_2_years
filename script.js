@@ -34,87 +34,65 @@ setInterval(draw,30);
 // ===== ELEMENTS =====
 const text = document.getElementById("text");
 const heart = document.getElementById("heart");
-const letter = document.getElementById("letter");
-const gallery = document.getElementById("gallery");
+const thanks = document.getElementById("thanks");
+const circleBox = document.getElementById("circleBox");
 const question = document.getElementById("question");
-const yesBtn = document.getElementById("yesBtn");
-const finalText = document.getElementById("finalText");
+const yes = document.getElementById("yes");
+const final = document.getElementById("final");
 
 // ===== MUSIC =====
 window.addEventListener("click",()=>{
 document.getElementById("music").play();
 },{once:true});
 
-// ===== FLOW (FIXED SEQUENCE) =====
-function sleep(ms){
-return new Promise(r=>setTimeout(r,ms));
-}
+// ===== FLOW =====
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 
 async function run(){
 
-// 3 2 1 (GIỮ NGUYÊN)
-text.innerText="3";
-await sleep(1000);
+// 3-2-1 + text
+text.innerText="3"; await sleep(800);
+text.innerText="2"; await sleep(800);
+text.innerText="1"; await sleep(800);
 
-text.innerText="2";
-await sleep(1000);
+text.innerText="HAPPY"; await sleep(1000);
+text.innerText="ANNIVERSARY"; await sleep(1000);
+text.innerText="2 YEARS"; await sleep(1200);
 
-text.innerText="1";
-await sleep(1000);
-
-// HAPPY
-text.innerText="HAPPY";
-await sleep(1200);
-
-// ANNIVERSARY
-text.innerText="ANNIVERSARY";
-await sleep(1200);
-
-// 2 YEARS
-text.innerText="2 YEARS";
-await sleep(1500);
-
-// HEART
+// HEART + THANKS
 heart.style.display="block";
-await sleep(1500);
+thanks.style.display="block";
 
-// LETTER (KHÔNG MẤT TEXT TRÊN)
-letter.style.display="block";
-letter.innerHTML="Cảm ơn em đã đến bên anh...<br>2 năm qua rất đẹp ❤️";
-await sleep(2500);
+await sleep(2000);
 
-// GALLERY (CHẠY XONG MỚI QUA BƯỚC SAU)
-gallery.style.display="block";
-startSlider();
-await sleep(6000);
+// ẨN HEART PHASE
+heart.style.display="none";
+text.innerText="";
+thanks.style.display="none";
 
-// QUESTION (LUÔN Ở CUỐI)
+// CIRCLE GALLERY
+circleBox.style.display="block";
+await sleep(8000);
+
+// QUESTION
+circleBox.style.display="none";
+
 question.style.display="block";
-yesBtn.style.display="inline-block";
+yes.style.display="inline-block";
 }
 
 run();
 
-// ===== SLIDER =====
-let index=0;
-
-function startSlider(){
-setInterval(()=>{
-index++;
-if(index>2) index=0;
-document.getElementById("slider").style.transform=`translateX(-${index*300}px)`;
-},2000);
-}
-
-// ===== BUTTON FIX (KHÔNG MẤT) =====
-yesBtn.onclick=function(){
-
+// ===== CLICK YES =====
+yes.onclick=()=>{
 question.style.display="none";
-yesBtn.style.display="none";
-
-finalText.style.display="block";
+yes.style.display="none";
 
 fireworks();
+
+setTimeout(()=>{
+final.style.display="block";
+},1500);
 };
 
 // ===== FIREWORKS =====
