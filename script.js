@@ -44,19 +44,16 @@ const music=document.getElementById("music");
 // MUSIC AUTO
 window.addEventListener("click",()=>music.play(),{once:true});
 
-function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+function sleep(ms){
+return new Promise(r=>setTimeout(r,ms));
+}
 
-// 💌 TYPEWRITER + AUTO SCROLL FIX
+// TYPEWRITER
 async function typeText(text){
 letterText.innerHTML="";
-
 for(let i=0;i<text.length;i++){
 letterText.innerHTML += text[i];
-
-// 🔥 auto scroll
-letterText.scrollTop = letterText.scrollHeight;
-
-await sleep(25);
+await sleep(22);
 }
 }
 
@@ -97,14 +94,14 @@ text.innerText="";
 heart.style.display="none";
 thanks.style.display="none";
 
-// 💌 LETTER
+// 💌 PAPER LETTER
 letterBox.style.display="block";
 
 await typeText(`
-Cảm ơn em đã cùng anh đi qua mọi cung bậc cảm xúc.
+Cảm ơn em đã cùng anh đi qua mọi cảm xúc.
 
-2 năm qua anh trân trọng từng nụ cười của em,
-từng cái ôm và cả những lần giận hờn để hiểu nhau hơn.
+Hai năm qua anh trân trọng từng nụ cười của em,
+từng cái ôm và cả những lúc giận hờn để hiểu nhau hơn.
 
 Yêu em là điều đúng đắn nhất anh từng làm.
 
@@ -114,14 +111,14 @@ chỉ cần có em bên cạnh.
 Cảm ơn em vì đã luôn ở lại bên anh.
 
 Dù sau này thế nào,
-anh vẫn muốn bên cạnh em.
+anh vẫn muốn ở cạnh em.
 `);
 
 await sleep(2000);
 
 letterBox.style.display="none";
 
-// 🌍 PLANET
+// PLANET
 planet.style.display="block";
 
 const imgs=document.querySelectorAll(".circle");
