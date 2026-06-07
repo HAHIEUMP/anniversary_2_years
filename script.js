@@ -114,7 +114,7 @@ chỉ cần có em bên cạnh.
 Cảm ơn em vì đã luôn ở lại bên anh.
 
 Dù sau này thế nào,
-anh vẫn sẽ chọn em.
+anh vẫn muốn bên cạnh em.
 `);
 
 await sleep(2000);
