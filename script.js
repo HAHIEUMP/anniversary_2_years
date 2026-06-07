@@ -14,7 +14,7 @@ let fontSize = 14;
 let columns = Math.floor(canvas.width / fontSize);
 let drops = Array(columns).fill(1);
 
-function drawMatrix() {
+function draw() {
   ctx.fillStyle = "rgba(0,0,0,0.08)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -32,7 +32,7 @@ function drawMatrix() {
   }
 }
 
-setInterval(drawMatrix, 30);
+setInterval(draw, 30);
 
 // =====================
 // ELEMENTS
@@ -40,32 +40,28 @@ setInterval(drawMatrix, 30);
 const text = document.getElementById("text");
 const heart = document.getElementById("heart");
 const thanks = document.getElementById("thanks");
-const circleBox = document.getElementById("circleBox");
+const planet = document.getElementById("planet");
 const question = document.getElementById("question");
-const yesBtn = document.getElementById("yes");
-const finalText = document.getElementById("final");
+const yes = document.getElementById("yes");
+const final = document.getElementById("final");
 const music = document.getElementById("music");
 
 // =====================
-// MUSIC (fix autoplay policy)
+// MUSIC FIX
 // =====================
 window.addEventListener("click", () => {
   music.play();
 }, { once: true });
 
 // =====================
-// HELP FUNCTION
+// FLOW
 // =====================
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(r => setTimeout(r, ms));
 }
 
-// =====================
-// MAIN FLOW (AUTO RUN)
-// =====================
 async function run() {
 
-  // 3 2 1
   text.innerText = "3";
   await sleep(800);
 
@@ -75,82 +71,81 @@ async function run() {
   text.innerText = "1";
   await sleep(800);
 
-  // HAPPY
   text.innerText = "HAPPY";
   await sleep(1000);
 
-  // ANNIVERSARY
   text.innerText = "ANNIVERSARY";
   await sleep(1200);
 
-  // 2 YEARS
   text.innerText = "2 YEARS";
   await sleep(1500);
 
-  // HEART + THANKS
   heart.style.display = "block";
   thanks.style.display = "block";
   thanks.innerText = "Cảm ơn em vì đã đến bên anh ❤️";
 
   await sleep(2500);
 
-  // hide intro stage
+  // hide intro
+  text.innerText = "";
   heart.style.display = "none";
   thanks.style.display = "none";
-  text.innerText = "";
 
   // =====================
-  // CIRCLE GALLERY (15 IMAGES)
+  // 🌍 PLANET 3D GALLERY
   // =====================
-  circleBox.style.display = "block";
+  planet.style.display = "block";
 
   const imgs = document.querySelectorAll(".circle");
+  const radius = 120;
 
-  // FIX: spread images evenly in circle
   imgs.forEach((img, i) => {
-    const angle = (i / imgs.length) * 360;
+    const angle = (i / imgs.length) * Math.PI * 2;
+
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+
+    const z = Math.sin(angle) * 40;
+
     img.style.transform = `
-      rotate(${angle}deg)
-      translateY(-110px)
-      rotate(-${angle}deg)
+      translate(-50%, -50%)
+      translate3d(${x}px, ${y}px, ${z}px)
+      scale(${0.7 + (z + 40) / 120})
     `;
   });
 
   await sleep(8000);
 
-  // hide gallery
-  circleBox.style.display = "none";
+  planet.style.display = "none";
 
   // =====================
   // QUESTION
   // =====================
-question.style.display = "block";
-  yesBtn.style.display = "inline-block";
+  question.style.display = "block";
+  yes.style.display = "inline-block";
 }
 
 run();
 
 // =====================
-// YES BUTTON
+// YES CLICK
 // =====================
-yesBtn.onclick = () => {
+yes.onclick = () => {
 
   question.style.display = "none";
-  yesBtn.style.display = "none";
+  yes.style.display = "none";
 
-  // FIREWORKS
-  fireworkEffect();
+  firework();
 
   setTimeout(() => {
-    finalText.style.display = "block";
-    finalText.innerText = "Anh yêu em ❤️";
+    final.style.display = "block";
   }, 1200);
 };
 
 // =====================
-// FIREWORK EFFECT
+// FIREWORKS
 // =====================
-function fireworkEffect() {
+function firework() {
   for (let i = 0; i < 80; i++) {
     let f = document.createElement("div");
     f.innerHTML = "✨";
@@ -158,7 +153,6 @@ function fireworkEffect() {
     f.style.left = Math.random() * window.innerWidth + "px";
     f.style.top = Math.random() * window.innerHeight + "px";
     f.style.fontSize = "18px";
-    f.style.zIndex = "999";
 
     document.body.appendChild(f);
 
