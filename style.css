@@ -50,7 +50,10 @@ color:red;
 100%{transform:scale(1);}
 }
 
-/* 💌 LETTER FIX FULL */
+/* =========================
+   💌 LETTER FIX (NO SCROLLBAR)
+========================= */
+
 #letterBox{
 display:none;
 position:absolute;
@@ -64,9 +67,10 @@ border-radius:12px;
 background:rgba(255,255,255,0.08);
 backdrop-filter: blur(6px);
 z-index:999;
-overflow:hidden;
+overflow:hidden;   /* 🔥 QUAN TRỌNG */
 }
 
+/* inner scroll area */
 #letterText{
 font-size:14px;
 line-height:1.6;
@@ -75,16 +79,18 @@ text-align:left;
 color:white;
 
 height:100%;
-overflow-y:auto;
-padding-right:6px;
+overflow-y:scroll;   /* vẫn cho cuộn */
+padding-right:10px;
 
-/* 🔥 ẨN THANH CUỘN */
-scrollbar-width: none;      /* Firefox */
--ms-overflow-style: none;   /* IE / Edge cũ */
+/* 🔥 ẨN SCROLLBAR CHUẨN ALL BROWSER */
+scrollbar-width: none;        /* Firefox */
+-ms-overflow-style: none;     /* IE/Edge cũ */
 }
 
-/* 🔥 Chrome / Safari / Edge mới */
+/* Chrome / Safari / Edge */
 #letterText::-webkit-scrollbar{
+width:0px;
+height:0px;
 display:none;
 }
 
