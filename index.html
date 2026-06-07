@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<title>Love You ❤️</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,35 +10,37 @@
 
 <canvas id="matrix"></canvas>
 
-<audio id="music" loop>
+<audio id="music" loop autoplay>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<div id="scene">
+<div class="center">
 
-  <div id="intro">Là người muốn chăm sóc em cả đời này...</div>
-
-  <div id="countdown"></div>
-
-  <div id="stageText"></div>
+  <div id="text"></div>
 
   <div id="heart">❤️</div>
 
-  <div id="letter">
-    <p id="typing"></p>
-  </div>
+  <div id="letter"></div>
 
   <div id="gallery">
-    <div class="slider">
+    <div class="slider" id="slider">
       <img src="img1.jpg">
       <img src="img2.jpg">
       <img src="img3.jpg">
     </div>
   </div>
 
+  <div id="question">
+    Em có đồng ý bên cạnh anh cả đời không?
+  </div>
+
+  <button id="yesBtn">Đồng ý</button>
+
+  <div id="finalText">Anh yêu em ❤️</div>
+
 </div>
 
-<div class="hint">👉 Bấm màn hình để tiếp tục</div>
+<canvas id="fireworks"></canvas>
 
 <script src="script.js"></script>
 </body>
