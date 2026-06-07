@@ -51,7 +51,7 @@ color:red;
 }
 
 /* =========================
-   💌 LETTER FIX (NO SCROLLBAR)
+   💌 PAPER LETTER (NEW)
 ========================= */
 
 #letterBox{
@@ -61,37 +61,60 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 width:360px;
-height:320px;
-padding:15px;
-border-radius:12px;
-background:rgba(255,255,255,0.08);
-backdrop-filter: blur(6px);
+height:420px;
 z-index:999;
-overflow:hidden;   /* 🔥 QUAN TRỌNG */
 }
 
-/* inner scroll area */
+/* TOP ROLL */
+#paperTop{
+width:100%;
+height:40px;
+background:linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+border-radius:10px 10px 0 0;
+}
+
+/* PAPER BODY */
+#paper{
+width:100%;
+height:340px;
+background:rgba(255,255,255,0.10);
+backdrop-filter: blur(6px);
+overflow:hidden;
+padding:15px;
+box-shadow:0 0 30px rgba(255,255,255,0.1);
+
+animation:paperOpen 1.2s ease;
+transform-origin:top;
+}
+
+/* BOTTOM ROLL */
+#paperBottom{
+width:100%;
+height:40px;
+background:linear-gradient(to top, rgba(255,255,255,0.25), transparent);
+border-radius:0 0 10px 10px;
+}
+
+/* TEXT */
 #letterText{
 font-size:14px;
-line-height:1.6;
+line-height:1.7;
 white-space:pre-wrap;
-text-align:left;
 color:white;
-
-height:100%;
-overflow-y:scroll;   /* vẫn cho cuộn */
-padding-right:10px;
-
-/* 🔥 ẨN SCROLLBAR CHUẨN ALL BROWSER */
-scrollbar-width: none;        /* Firefox */
--ms-overflow-style: none;     /* IE/Edge cũ */
+text-align:left;
+animation:floatText 1.5s ease;
 }
 
-/* Chrome / Safari / Edge */
-#letterText::-webkit-scrollbar{
-width:0px;
-height:0px;
-display:none;
+/* OPEN PAPER */
+@keyframes paperOpen{
+0%{transform:scaleY(0.2);opacity:0;}
+100%{transform:scaleY(1);opacity:1;}
+}
+
+/* TEXT FLOAT */
+@keyframes floatText{
+0%{transform:translateY(10px);opacity:0;}
+100%{transform:translateY(0);opacity:1;}
 }
 
 /* PLANET */
